@@ -8,6 +8,7 @@
 #include "list_based_array.h"
 #include "stack.h"
 #include "queue.h"
+#include "double_linked_list.h"
 
 void TEST_LINKED_STACK();
 void TEST_LINKED_LIST();
@@ -16,8 +17,12 @@ void TEST_LINKED_QUEUE();
 void TEST_LIST_ARRAY_BASED();
 void TEST_STACK_ARRAY();
 void TEST_QUEUE_ARRAY();
+void TEST_MAP();
+void PRINT_MAP(map m);
 
 int main() {
+
+    TEST_MAP();
 
 //     TEST_LINKED_STACK();
 //     TEST_LINKED_LIST();
@@ -25,9 +30,32 @@ int main() {
 //     TEST_LINKED_QUEUE();
 //     TEST_LIST_ARRAY_BASED();
 //     TEST_STACK_ARRAY();
-//    TEST_QUEUE_ARRAY();
+//     TEST_QUEUE_ARRAY();
 
-   return 0;
+        return 0;
+}
+
+void TEST_MAP() {
+     map m;
+     Create_map(&m);
+    printf("size: %d\n", size_map(&m));
+    Insert_m(&m, 'B', 1);
+    Insert_m(&m, 'E', 3);
+    Insert_m(&m, 'C', 2);
+    Insert_m(&m, 'A', 0);
+    Insert_m(&m, 'D', 4);
+    PRINT_MAP(m);
+    printf("size: %d\n", size_map(&m));
+    printf("%c\n", Retrieve_map(&m, 3));
+    printf("%c\n", Retrieve_map(&m, 1));
+    printf("%c\n", Retrieve_map(&m, 2));
+    printf("%c\n", Retrieve_map(&m, 0));
+    printf("%c\n", Retrieve_map(&m, 4));
+    printf("size: %d\n", size_map(&m));
+}
+
+void PRINT_MAP(map m) {
+    print_map(&m);
 }
 
 void TEST_QUEUE_ARRAY() {
