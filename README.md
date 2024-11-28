@@ -10,3 +10,4 @@
 - linked queue.
 - queue based linked list (second layer).
 - double sorted linked list (map).
+- double linked list
