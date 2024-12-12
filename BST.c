@@ -78,3 +78,75 @@ void InOrder(Node **current) {
     printf("%d\n", (*current)->__data);
     InOrder(&(*current)->__right);
 }
+
+Node* FindMin(Node **root) {
+    while((*root)->__left != NULL) *root = (*root)->__left;
+    return *root;
+}
+
+void Delete(Node **curr, typeEntry data) {
+     if(*curr == NULL) return ;
+     else if(data < (**curr).__data) Delete(&(*curr)->__left, data);
+     else if(data > (**curr).__data) Delete(&(*curr)->__right, data);
+     else {
+        // Case one:
+         if((*curr)->__left == NULL && (*curr)->__right == NULL) {
+             free((*curr));
+             *curr = NULL;
+         }
+         // Case two:
+         else if((*curr)->__left == NULL) {
+             Node *temp = (*curr);
+             (*curr) = (*curr)->__right;
+             free(temp);
+         } else if((*curr)->__right == NULL){
+             Node *temp = (*curr);
+             (*curr) = (*curr)->__left;
+             free(temp);
+         }
+         // Case three:
+         else {
+            Node *temp = FindMin(&(*curr)->__right);
+             (*curr)->__data = temp->__data;
+              Delete(&(*curr)->__right,temp->__data);
+          }
+      }
+}
+
+
+
+
+
+/*
+ struct Node* Delete(struct Node *root, int data) {
+	if(root == NULL) return root;
+	else if(data < root->data) root->left = Delete(root->left,data);
+	else if (data > root->data) root->right = Delete(root->right,data);
+	// Wohoo... I found you, Get ready to be deleted
+	else {
+		// Case 1:  No child
+		if(root->left == NULL && root->right == NULL) {
+			delete root;
+			root = NULL;
+		}
+		//Case 2: One child
+		else if(root->left == NULL) {
+			struct Node *temp = root;
+			root = root->right;
+			delete temp;
+		}
+		else if(root->right == NULL) {
+			struct Node *temp = root;
+			root = root->left;
+			delete temp;
+		}
+		// case 3: 2 children
+		else {
+			struct Node *temp = FindMin(root->right);
+			root->data = temp->data;
+			root->right = Delete(root->right,temp->data);
+		}
+	}
+	return root;
+}
+ */
