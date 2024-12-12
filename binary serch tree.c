@@ -18,6 +18,7 @@ int main() {
      PreOrder(&myTree);
     printf(" ----- Post-Order Traversal -----\n");
      PostOrder(&myTree);
+
     printf(" ----- In-Order Traversal -----\n");
     InOrder(&myTree);
 
@@ -29,6 +30,11 @@ int main() {
 
     int min = MinElement(&myTree);
     printf("min element in the tree:%d\n", min);
+
+    Delete(&myTree, 1);
+
+    printf(" ----- pre-Order Traversal -----\n");
+    PreOrder(&myTree);
 
     return 0;
 }

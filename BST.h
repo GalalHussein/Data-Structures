@@ -5,7 +5,7 @@ typedef int typeEntry;
 typedef struct node {
     typeEntry __data;
     struct node *__right, *__left;
-} Node;
+} Node; 
 
 typedef Node *Tree;
 
@@ -18,6 +18,8 @@ int Height(Node **currentNode);
 void PreOrder(Node **current);
 void PostOrder(Node **current);
 void InOrder(Node **current);
+void Delete(Node **curr, typeEntry data);
+
 /*
  *  Create() *
  *  CreateNode() *
